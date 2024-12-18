@@ -20,7 +20,7 @@ function App() {
   const isAuthenticated = false;
   const user = {
     name:"Najatul islam",
-    role: "user",
+    role: "admin",
   }
   return (
     <div className="flex flex-col overflow-hidden bg-white">

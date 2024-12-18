@@ -8,7 +8,7 @@ function SignUp() {
         <h1 className="text-3xl tracking-tight font-bold text-foreground">Create Account</h1>
         <p className="mt-2">Already have an account 
 
-          <Link to="/userAuth/signIn" className="text-primary-foreground"> Sign In</Link>
+          <Link to="/userAuth/signIn" className="text-primary-foreground font-medium hover:underline"> Log In Here</Link>
         </p>
 
       </div>
