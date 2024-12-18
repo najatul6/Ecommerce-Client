@@ -30,7 +30,7 @@ function CheckAuth({ isAuthenticated, user, children }) {
     user?.role !== "admin" &&
     location.pathname.includes("admin")
   ) {
-    return <Navigate to="/unauth-page" />;
+    return <Navigate to="/un-authorization" />;
   }
 
   //   Check if the user is authenticated and the user is an admin then redirect to the admin dashboard

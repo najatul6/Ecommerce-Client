@@ -14,6 +14,7 @@ import UserListing from "./pages/User-view/UserListing";
 import Checkout from "./pages/User-view/Checkout";
 import UserAccount from "./pages/User-view/UserAccount";
 import CheckAuth from "./components/common/CheckAuth";
+import UnAuthPage from "./pages/UnAuthPage/UnAuthPage";
 
 function App() {
   const isAuthenticated = true;
@@ -67,6 +68,7 @@ function App() {
 
         {/* Not Found */}
         <Route path="*" element={<NotFound />} />
+        <Route path="/un-authorization" element={<UnAuthPage />} />
       </Routes>
     </div>
   );
