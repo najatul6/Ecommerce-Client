@@ -19,6 +19,7 @@ import UnAuthPage from "./pages/UnAuthPage/UnAuthPage";
 function App() {
   const isAuthenticated = true;
   const user = {
+    name:"Najatul islam",
     role: "user",
   }
   return (
