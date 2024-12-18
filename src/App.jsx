@@ -16,8 +16,10 @@ import UserAccount from "./pages/User-view/UserAccount";
 import CheckAuth from "./components/common/CheckAuth";
 
 function App() {
-  const isAuthenticated = false;
-  const user = null;
+  const isAuthenticated = true;
+  const user = {
+    role: "admin",
+  }
   return (
     <div className="flex flex-col overflow-hidden bg-white">
       <Routes>
@@ -30,7 +32,7 @@ function App() {
             </CheckAuth>
           }
         >
-          <Route path="singIn" element={<SignIn />} />
+          <Route path="signIn" element={<SignIn />} />
           <Route path="signUp" element={<SignUp />} />
         </Route>
         {/* Admin */}
