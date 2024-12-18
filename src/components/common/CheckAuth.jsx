@@ -3,7 +3,6 @@ import { Navigate, useLocation } from "react-router-dom";
 function CheckAuth({ isAuthenticated, user, children }) {
   const location = useLocation();
 
-//   Check if the user is authenticated and redirect to the appropriate page
   if (
     !isAuthenticated &&
     !(
@@ -14,7 +13,6 @@ function CheckAuth({ isAuthenticated, user, children }) {
     return <Navigate to="/userAuth/signIn" />;
   }
 
-//   Check if the user is authenticated and redirect to the appropriate page
   if (
     (isAuthenticated && location.pathname.includes("/signIn")) ||
     location.pathname.includes("/signUp")
@@ -23,7 +21,6 @@ function CheckAuth({ isAuthenticated, user, children }) {
     return <Navigate to="/user/home" />;
   }
 
-//   Check if the user is authenticated and redirect to the appropriate page
   if (
     isAuthenticated &&
     user?.role !== "admin" &&
@@ -31,6 +28,7 @@ function CheckAuth({ isAuthenticated, user, children }) {
   ) {
     return <Navigate to="/unauth-page" />;
   }
+
   if (
     isAuthenticated &&
     user?.role === "admin" &&
