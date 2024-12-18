@@ -4,7 +4,7 @@ function CommonForm({ formControls }) {
       <div className="flex flex-col gap-3">
         {formControls?.map((controlItem, index) => {
           return (
-            <div key={index}>
+            <div className="grid w-full gap-1.5" key={index}>
               <label
                 htmlFor={controlItem.name}
                 className="text-sm font-semibold text-gray-600"
