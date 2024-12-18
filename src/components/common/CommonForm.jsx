@@ -1,14 +1,17 @@
+import { SelectContent } from "@redix-ui/react-select";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "../ui/select";
+import { Select, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
+import { Textarea } from "../ui/textarea";
+import { Button } from "../ui/button";
 
-function CommonForm({ formControls }) {
+function CommonForm({
+  formControls,
+  formData,
+  setFormData,
+  onSubmit,
+  buttonText,
+}) {
   function inputsByComponentType(getControlItem) {
     let element = null;
     switch (getControlItem?.componentType) {
@@ -42,11 +45,10 @@ function CommonForm({ formControls }) {
         break;
       case "textarea":
         element = (
-          <Input
+          <Textarea
             name={getControlItem.name}
             placeholder={getControlItem.placeholder}
-            id={getControlItem.name}
-            type={getControlItem.type}
+            id={getControlItem.id}
           />
         );
         break;
@@ -65,7 +67,7 @@ function CommonForm({ formControls }) {
     return element;
   }
   return (
-    <form>
+    <form onSubmit={onSubmit}>
       <div className="flex flex-col gap-3">
         {formControls?.map((controlItem, index) => {
           return (
@@ -73,11 +75,14 @@ function CommonForm({ formControls }) {
               <Label htmlFor={controlItem?.name} className="mb-1">
                 {controlItem.label}
               </Label>
-              {inputsByComponentType[controlItem]()}
+              {inputsByComponentType(controlItem)}
             </div>
           );
         })}
       </div>
+      <Button type="submit" className="mt-2 w-full">
+        {buttonText || "Submit"}
+      </Button>
     </form>
   );
 }
