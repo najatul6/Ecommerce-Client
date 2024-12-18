@@ -1,22 +1,66 @@
+import { Input } from "../ui/input";
+import { Label } from "../ui/label";
+
 function CommonForm({ formControls }) {
+    function inputsByComponentType(getControlItem){
+        let element = null;
+        switch (getControlItem?.componentType) {
+            case 'input':
+                element=<Input
+                 name={getControlItem.name}
+
+                    placeholder={getControlItem.placeholder}
+                    id={getControlItem.name}
+                    type={getControlItem.type}
+                
+                />
+                break;
+            case 'select':
+                element=(
+                    <Select>
+                        
+                    </Select>
+                )
+                break;
+            case 'textarea':
+                element=<Input
+                 name={getControlItem.name}
+
+                    placeholder={getControlItem.placeholder}
+                    id={getControlItem.name}
+                    type={getControlItem.type}
+                
+                />
+                break;
+        
+            default:
+                element=<Input
+                 name={getControlItem.name}
+
+                    placeholder={getControlItem.placeholder}
+                    id={getControlItem.name}
+                    type={getControlItem.type}
+                
+                />
+                break;
+        }
+        return element;
+    }
   return (
     <form>
       <div className="flex flex-col gap-3">
         {formControls?.map((controlItem, index) => {
           return (
             <div className="grid w-full gap-1.5" key={index}>
-              <label
-                htmlFor={controlItem.name}
-                className="text-sm font-semibold text-gray-600"
+              <Label
+                htmlFor={controlItem?.name}
+                className="mb-1"
               >
                 {controlItem.label}
-              </label>
-              <input
-                type={controlItem.type}
-                id={controlItem.id}
-                className="w-full px-4 py-2 mt-2 border rounded-lg"
-                placeholder={controlItem.placeholder}
-              />
+              </Label>
+             {
+                inputsByComponentType[controlItem]()
+             }
             </div>
           );
         })}
