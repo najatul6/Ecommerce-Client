@@ -26,11 +26,5 @@ export const signUpFormControls=[
         placeholder:"Confirm your password",
         componentType:"input",
         type:"password",
-    },
-    {
-        name:"submit",
-        label:"Sign Up",
-        componentType:"button",
-        type:"submit",
     }
 ]
