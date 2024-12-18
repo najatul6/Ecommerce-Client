@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom"
 import AuthLayout from "./components/userAuth/layout"
-import Login from "./pages/userAuth/Login"
-import Register from "./pages/userAuth/Register"
+import SignIn from "./pages/userAuth/SignIn"
+import SignUp from "./pages/userAuth/SignUp"
 
 
 function App() {
@@ -11,8 +11,8 @@ function App() {
       {/* Common Component */}
       <Routes>
         <Route path="/userAuth" element={<AuthLayout/>}>
-        <Route path="/singIn" element={<Login/>}/>
-        <Route path="/signUp" element={<Register/>}/>
+        <Route path="singIn" element={<SignIn/>}/>
+        <Route path="signUp" element={<SignUp/>}/>
         </Route>
       </Routes>
     
