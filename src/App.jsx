@@ -6,8 +6,6 @@ import AdminProducts from "./pages/Admin-view/AdminProducts";
 import AdminOrders from "./pages/Admin-view/AdminOrders";
 import AdminFeatures from "./pages/Admin-view/AdminFeatures";
 import NotFound from "./pages/NotFound/NotFound";
-import UserHome from "./pages/ShoppingView/Home";
-import UserListing from "./pages/ShoppingView/ProductListing";
 import Checkout from "./pages/ShoppingView/Checkout";
 import UserAccount from "./pages/ShoppingView/UserAccount";
 import CheckAuth from "./components/common/CheckAuth";
@@ -15,6 +13,8 @@ import UnAuthPage from "./pages/UnAuthPage/UnAuthPage";
 import SignIn from "./pages/auth/SignIn";
 import SignUp from "./pages/auth/SignUp";
 import ShoppingLayout from "./components/ShoppingView/ShoppingLayout";
+import ShoppingHome from "./pages/ShoppingView/Home";
+import ProductListing from "./pages/ShoppingView/ProductListing";
 
 function App() {
   const isAuthenticated = true;
@@ -61,8 +61,8 @@ function App() {
             </CheckAuth>
           }
         >
-          <Route path="home" element={<UserHome />} />
-          <Route path="listing" element={<UserListing />} />
+          <Route path="home" element={<ShoppingHome />} />
+          <Route path="listing" element={<ProductListing />} />
           <Route path="checkout" element={<Checkout />} />
           <Route path="account" element={<UserAccount />} />
         </Route>
