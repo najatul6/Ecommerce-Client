@@ -1,33 +1,30 @@
 import { Route, Routes } from "react-router-dom";
-import AuthLayout from "./components/userAuth/layout";
-import SignIn from "./pages/userAuth/SignIn";
-import SignUp from "./pages/userAuth/SignUp";
+import AuthLayout from "./components/auth/layout";
 import AdminLayout from "./components/Admin-view/AdminLayout";
 import AdminDashboard from "./pages/Admin-view/AdminDashboard";
 import AdminProducts from "./pages/Admin-view/AdminProducts";
 import AdminOrders from "./pages/Admin-view/AdminOrders";
 import AdminFeatures from "./pages/Admin-view/AdminFeatures";
-import UserLayout from "./components/user-view/UserLayout";
 import NotFound from "./pages/NotFound/NotFound";
-import UserHome from "./pages/User-view/UserHome";
-import UserListing from "./pages/User-view/UserListing";
-import Checkout from "./pages/User-view/Checkout";
-import UserAccount from "./pages/User-view/UserAccount";
+import UserHome from "./pages/ShoppingView/UserHome";
+import UserListing from "./pages/ShoppingView/ProductListing";
+import Checkout from "./pages/ShoppingView/Checkout";
+import UserAccount from "./pages/ShoppingView/UserAccount";
 import CheckAuth from "./components/common/CheckAuth";
 import UnAuthPage from "./pages/UnAuthPage/UnAuthPage";
+import SignIn from "./pages/auth/SignIn";
+import SignUp from "./pages/auth/SignUp";
+import ShoppingLayout from "./components/ShoppingView/ShoppingLayout";
 
 function App() {
   const isAuthenticated = false;
-  const user = {
-    name:"Najatul islam",
-    role: "admin",
-  }
+  const user = null;
   return (
     <div className="flex flex-col overflow-hidden bg-white">
       <Routes>
         {/* Authentication */}
         <Route
-          path="/userAuth"
+          path="/auth"
           element={
             <CheckAuth isAuthenticated={isAuthenticated} user={user}>
               <AuthLayout />
@@ -57,7 +54,7 @@ function App() {
           path="/user"
           element={
             <CheckAuth>
-              <UserLayout />
+              <ShoppingLayout />
             </CheckAuth>
           }
         >
