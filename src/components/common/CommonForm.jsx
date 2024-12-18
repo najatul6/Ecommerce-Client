@@ -14,6 +14,10 @@ function CommonForm({
 }) {
   function inputsByComponentType(getControlItem) {
     let element = null;
+
+    const value=formData[getControlItem.name] || "";
+
+
     switch (getControlItem?.componentType) {
       case "input":
         element = (
@@ -22,12 +26,22 @@ function CommonForm({
             placeholder={getControlItem.placeholder}
             id={getControlItem.name}
             type={getControlItem.type}
+            value={value}
+            onChange={(e) => {
+              setFormData({
+                ...formData,
+                [getControlItem.name]: e.target.value,
+              });
+            }}
           />
         );
         break;
       case "select":
         element = (
-          <Select>
+          <Select onValueChange={(e)=>setFormData({
+            ...formData,
+            [getControlItem.name]: value,
+          })} value={value} >
             <SelectTrigger className="w-full">
               <SelectValue placeholder={getControlItem.placeholder} />
             </SelectTrigger>
@@ -49,6 +63,13 @@ function CommonForm({
             name={getControlItem.name}
             placeholder={getControlItem.placeholder}
             id={getControlItem.id}
+            value={value}
+            onChange={(e) => {
+                setFormData({
+                  ...formData,
+                  [getControlItem.name]: e.target.value,
+                });
+              }}
           />
         );
         break;
@@ -60,6 +81,13 @@ function CommonForm({
             placeholder={getControlItem.placeholder}
             id={getControlItem.name}
             type={getControlItem.type}
+            value={value}
+            onChange={(e) => {
+                setFormData({
+                  ...formData,
+                  [getControlItem.name]: e.target.value,
+                });
+              }}
           />
         );
         break;
