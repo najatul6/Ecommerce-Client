@@ -4,6 +4,7 @@ import { Label } from "../ui/label";
 import { Select, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import { Textarea } from "../ui/textarea";
 import { Button } from "../ui/button";
+import PropTypes from "prop-types";
 
 function CommonForm({
   formControls,
@@ -38,7 +39,7 @@ function CommonForm({
         break;
       case "select":
         element = (
-          <Select onValueChange={(e)=>setFormData({
+          <Select onValueChange={(value)=>setFormData({
             ...formData,
             [getControlItem.name]: value,
           })} value={value} >
@@ -114,5 +115,13 @@ function CommonForm({
     </form>
   );
 }
+
+CommonForm.propTypes = {
+    formControls: PropTypes.array,
+    formData: PropTypes.object,
+    setFormData: PropTypes.func,
+    onSubmit: PropTypes.func,
+    buttonText: PropTypes.string,
+};
 
 export default CommonForm;
