@@ -17,8 +17,11 @@ import SignUp from "./pages/auth/SignUp";
 import ShoppingLayout from "./components/ShoppingView/ShoppingLayout";
 
 function App() {
-  const isAuthenticated = false;
-  const user = null;
+  const isAuthenticated = true;
+  const user = {
+    name:"Najatul",
+    role:"user"
+  };
   return (
     <div className="flex flex-col overflow-hidden bg-white">
       <Routes>
@@ -51,7 +54,7 @@ function App() {
 
         {/* User */}
         <Route
-          path="/user"
+          path="/shop"
           element={
             <CheckAuth>
               <ShoppingLayout />
