@@ -22,6 +22,8 @@ function CheckAuth({ isAuthenticated, user, children }) {
     if (user?.role === "admin") return <Navigate to="/admin/dashboard" />;
     return <Navigate to="/user/home" />;
   }
+
+//   Check if the user is authenticated and redirect to the appropriate page
   if (
     isAuthenticated &&
     user?.role !== "admin" &&
