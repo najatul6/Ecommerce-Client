@@ -6,7 +6,7 @@ import AdminProducts from "./pages/Admin-view/AdminProducts";
 import AdminOrders from "./pages/Admin-view/AdminOrders";
 import AdminFeatures from "./pages/Admin-view/AdminFeatures";
 import NotFound from "./pages/NotFound/NotFound";
-import UserHome from "./pages/ShoppingView/UserHome";
+import UserHome from "./pages/ShoppingView/Home";
 import UserListing from "./pages/ShoppingView/ProductListing";
 import Checkout from "./pages/ShoppingView/Checkout";
 import UserAccount from "./pages/ShoppingView/UserAccount";
