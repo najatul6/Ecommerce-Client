@@ -17,7 +17,6 @@ import UserAccount from "./pages/User-view/UserAccount";
 function App() {
   return (
     <div className="flex flex-col overflow-hidden bg-white">
-      
       <Routes>
         {/* Authentication */}
         <Route path="/userAuth" element={<AuthLayout />}>
@@ -39,9 +38,9 @@ function App() {
           <Route path="checkout" element={<Checkout />} />
           <Route path="account" element={<UserAccount />} />
         </Route>
-        
+
         {/* Not Found */}
-        <Route path="*" element={<NotFound/>} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );
