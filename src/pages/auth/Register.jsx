@@ -1,8 +1,8 @@
 
-function AuthLogIn() {
+function AuthRegister() {
   return (
-    <div>AuthLogIn</div>
+    <div>AuthRegister</div>
   )
 }
 
-export default AuthLogIn
+export default AuthRegister
