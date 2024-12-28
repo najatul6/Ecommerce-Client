@@ -3,50 +3,43 @@ import { Navigate, useLocation } from "react-router-dom";
 
 function CheckAuth({ isAuthenticated, user, children }) {
   const location = useLocation();
-  const currentPath = location.pathname;
+  console.log(location.pathname,isAuthenticated);
 
-  console.log(currentPath, isAuthenticated);
-
-  // Not authenticated and not on the sign-in or sign-up page
-  if (
-    !isAuthenticated &&
-    !currentPath.includes("/signIn") &&
-    !currentPath.includes("/signUp")
-  ) {
-    return <Navigate to="/auth/signIn" replace />;
+  //   Check if the user is not authenticated then redirect to the sign-in page
+  if (!isAuthenticated && !(location.pathname.includes("/signIn") || location.pathname.includes("/signUp"))) {
+    return <Navigate to="/auth/signIn" />;
   }
 
-  // Authenticated and navigating to sign-in or sign-up
+  //   Check if the user is authenticated and the user is an admin then redirect to the admin dashboard
   if (
-    isAuthenticated &&
-    (currentPath.includes("/signIn") || currentPath.includes("/signUp"))
+    (isAuthenticated && location?.pathname?.includes("/signIn")) ||
+    location?.pathname?.includes("/signUp")
   ) {
-    return user?.role === "admin" ? (
-      <Navigate to="/admin/dashboard" replace />
-    ) : (
-      <Navigate to="/shop/home" replace />
-    );
+    if (user?.role === "admin"){ 
+      return <Navigate to="/admin/dashboard" />
+    }else{
+      return <Navigate to="/shop/home" />;
+    }
   }
 
-  // Authenticated, non-admin user trying to access admin paths
+  //   Check if the user is authenticated and the user is not an admin then redirect to the user home page
   if (
     isAuthenticated &&
     user?.role !== "admin" &&
-    currentPath.includes("/admin")
+    location.pathname.includes("admin")
   ) {
-    return <Navigate to="/un-authorization" replace />;
+    return <Navigate to="/un-authorization" />;
   }
 
-  // Authenticated admin user trying to access non-admin paths
+  //   Check if the user is authenticated and the user is an admin then redirect to the admin dashboard
   if (
     isAuthenticated &&
     user?.role === "admin" &&
-    currentPath.includes("/user")
+    location.pathname.includes("user")
   ) {
-    return <Navigate to="/admin/dashboard" replace />;
+    return <Navigate to="/admin/dashboard" />;
   }
 
-  // If none of the above conditions are met, render children
   return children;
 }
 
