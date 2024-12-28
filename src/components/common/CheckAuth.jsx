@@ -7,18 +7,18 @@ function CheckAuth({ isAuthenticated, user, children }) {
 
   //   Check if the user is not authenticated then redirect to the sign-in page
   if (!isAuthenticated && !(location.pathname.includes("/signIn") || location.pathname.includes("/signUp"))) {
-    return <Navigate to="/auth/signIn" />;
+    return <Navigate to="/auth/signIn" replace={true}/>;
   }
 
   //   Check if the user is authenticated and the user is an admin then redirect to the admin dashboard
   if (
     (isAuthenticated && location?.pathname?.includes("/signIn")) ||
-    location?.pathname?.includes("/signUp")
+    location?.pathname.includes("/signUp")
   ) {
     if (user?.role === "admin"){ 
-      return <Navigate to="/admin/dashboard" />
+      return <Navigate to="/admin/dashboard" replace={true} />
     }else{
-      return <Navigate to="/shop/home" />;
+      return <Navigate to="/shop/home" replace={true}/>;
     }
   }
 
@@ -26,18 +26,18 @@ function CheckAuth({ isAuthenticated, user, children }) {
   if (
     isAuthenticated &&
     user?.role !== "admin" &&
-    location.pathname.includes("admin")
+    location?.pathname?.includes("admin")
   ) {
-    return <Navigate to="/un-authorization" />;
+    return <Navigate to="/un-authorization"  replace={true}/>;
   }
 
   //   Check if the user is authenticated and the user is an admin then redirect to the admin dashboard
   if (
     isAuthenticated &&
     user?.role === "admin" &&
-    location.pathname.includes("user")
+    location?.pathname?.includes("user")
   ) {
-    return <Navigate to="/admin/dashboard" />;
+    return <Navigate to="/admin/dashboard" replace={true} />;
   }
 
   return children;
