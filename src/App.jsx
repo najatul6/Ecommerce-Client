@@ -9,8 +9,8 @@ function App() {
     <div className="flex flex-col overflow-hidden bg-white">
      <Routes>
       <Route path="/auth" element={<AuthLayout />}>
-        <Route path="/register" element={<AuthRegister />} />
-        <Route path="/login" element={<AuthLogin />}/>
+        <Route path="register" element={<AuthRegister />} />
+        <Route path="login" element={<AuthLogin />}/>
       </Route>
      </Routes>
     </div>
