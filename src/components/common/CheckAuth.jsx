@@ -1,45 +1,44 @@
 import PropTypes from "prop-types";
 import { Navigate, useLocation } from "react-router-dom";
 
-function CheckAuth({ isAuthenticated, user, children }) {
+function CheckAuth({ isAuthenticated = false, user, children }) {
   const location = useLocation();
-  console.log(location.pathname,isAuthenticated);
+  const currentPath = location.pathname;
 
-  //   Check if the user is not authenticated then redirect to the sign-in page
-  if (!isAuthenticated && !(location.pathname.includes("/signIn") || location.pathname.includes("/signUp"))) {
-    return <Navigate to="/auth/signIn" replace={true}/>;
-  }
+  console.log(currentPath, isAuthenticated);
 
-  //   Check if the user is authenticated and the user is an admin then redirect to the admin dashboard
+  // Redirect unauthenticated users to the sign-in page, unless already on sign-in/sign-up
   if (
-    (isAuthenticated && location?.pathname?.includes("/signIn")) ||
-    location?.pathname.includes("/signUp")
+    !isAuthenticated &&
+    !currentPath.includes("/signIn") &&
+    !currentPath.includes("/signUp")
   ) {
-    if (user?.role === "admin"){ 
-      return <Navigate to="/admin/dashboard" replace={true} />
-    }else{
-      return <Navigate to="/shop/home" replace={true}/>;
-    }
+    return <Navigate to="/auth/signIn" replace={true} />;
   }
 
-  //   Check if the user is authenticated and the user is not an admin then redirect to the user home page
+  // Redirect authenticated users trying to access sign-in/sign-up
   if (
     isAuthenticated &&
-    user?.role !== "admin" &&
-    location?.pathname?.includes("admin")
+    (currentPath.includes("/signIn") || currentPath.includes("/signUp"))
   ) {
-    return <Navigate to="/un-authorization"  replace={true}/>;
+    return user?.role === "admin" ? (
+      <Navigate to="/admin/dashboard" replace={true} />
+    ) : (
+      <Navigate to="/shop/home" replace={true} />
+    );
   }
 
-  //   Check if the user is authenticated and the user is an admin then redirect to the admin dashboard
-  if (
-    isAuthenticated &&
-    user?.role === "admin" &&
-    location?.pathname?.includes("user")
-  ) {
+  // Prevent non-admin users from accessing admin paths
+  if (isAuthenticated && user?.role !== "admin" && currentPath.includes("admin")) {
+    return <Navigate to="/un-authorization" replace={true} />;
+  }
+
+  // Prevent admin users from accessing non-admin paths
+  if (isAuthenticated && user?.role === "admin" && currentPath.includes("user")) {
     return <Navigate to="/admin/dashboard" replace={true} />;
   }
 
+  // Render children if no redirect conditions are met
   return children;
 }
 
