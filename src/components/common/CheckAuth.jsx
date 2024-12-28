@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { Navigate, useLocation } from "react-router-dom";
 
-function CheckAuth({ isAuthenticated = false, user, children }) {
+function CheckAuth({ isAuthenticated, user, children }) {
   const location = useLocation();
   const currentPath = location.pathname;
 
