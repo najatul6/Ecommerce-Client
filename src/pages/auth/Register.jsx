@@ -1,8 +1,8 @@
 
-function Register() {
+function AuthLogIn() {
   return (
-    <div>Register</div>
+    <div>AuthLogIn</div>
   )
 }
 
-export default Register
+export default AuthLogIn
