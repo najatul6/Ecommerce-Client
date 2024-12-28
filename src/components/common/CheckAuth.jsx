@@ -3,48 +3,55 @@ import { Navigate, useLocation } from "react-router-dom";
 
 function CheckAuth({ isAuthenticated, user, children }) {
   const location = useLocation();
-  console.log(location.pathname,isAuthenticated);
+  const currentPath = location.pathname;
 
-  //   Check if the user is not authenticated then redirect to the sign-in page
-  if (!isAuthenticated && !(location.pathname.includes("/signIn") || location.pathname.includes("/signUp"))) {
-    return <Navigate to="/auth/signIn" />;
-  }
+  console.log(currentPath, isAuthenticated);
 
-  //   Check if the user is authenticated and the user is an admin then redirect to the admin dashboard
+  // Not authenticated and not on the sign-in or sign-up page
   if (
-    (isAuthenticated && location.pathname.includes("/signIn")) ||
-    location.pathname.includes("/signUp")
+    !isAuthenticated &&
+    !currentPath.includes("/signIn") &&
+    !currentPath.includes("/signUp")
   ) {
-    if (user?.role === "admin"){ 
-      return <Navigate to="/admin/dashboard" />
-    }else{
-      return <Navigate to="/shop/home" />;
-    }
+    return <Navigate to="/auth/signIn" replace />;
   }
 
-  //   Check if the user is authenticated and the user is not an admin then redirect to the user home page
+  // Authenticated and navigating to sign-in or sign-up
+  if (
+    isAuthenticated &&
+    (currentPath.includes("/signIn") || currentPath.includes("/signUp"))
+  ) {
+    return user?.role === "admin" ? (
+      <Navigate to="/admin/dashboard" replace />
+    ) : (
+      <Navigate to="/shop/home" replace />
+    );
+  }
+
+  // Authenticated, non-admin user trying to access admin paths
   if (
     isAuthenticated &&
     user?.role !== "admin" &&
-    location.pathname.includes("admin")
+    currentPath.includes("/admin")
   ) {
-    return <Navigate to="/un-authorization" />;
+    return <Navigate to="/un-authorization" replace />;
   }
 
-  //   Check if the user is authenticated and the user is an admin then redirect to the admin dashboard
+  // Authenticated admin user trying to access non-admin paths
   if (
     isAuthenticated &&
     user?.role === "admin" &&
-    location.pathname.includes("user")
+    currentPath.includes("/user")
   ) {
-    return <Navigate to="/admin/dashboard" />;
+    return <Navigate to="/admin/dashboard" replace />;
   }
 
+  // If none of the above conditions are met, render children
   return children;
 }
 
 CheckAuth.propTypes = {
-  isAuthenticated: PropTypes.bool.isRequired,
+  isAuthenticated: PropTypes.bool,
   user: PropTypes.object,
   children: PropTypes.node,
 };
