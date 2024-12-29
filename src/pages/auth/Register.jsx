@@ -12,6 +12,10 @@ const initialState = {
 function AuthRegister() {
   const [formData, setFormData] = useState(initialState);
 
+  function onSubmit() {
+
+  }
+
   return (
     <div className="w-full mx-auto max-w-md space-y-6">
       <div className="text-center">
@@ -24,6 +28,7 @@ function AuthRegister() {
         buttonText="Sign Up"
         formData={formData}
         setFormData={setFormData}
+        onSubmit={onSubmit}
       />
       <p className="mt-2 text-center">
         Already have an account?
