@@ -17,11 +17,8 @@ import ShoppingLayout from "./components/shopping-view/layout";
 import UnAuthPage from "./pages/unauth-page";
 
 function App() {
-  const isAuthenticated = true;
-  const user = {
-    name:'Najatul islam',
-    role:'user'
-  };
+  const isAuthenticated = false;
+  const user = null
   
   return (
     <div className="flex flex-col overflow-hidden bg-white">
