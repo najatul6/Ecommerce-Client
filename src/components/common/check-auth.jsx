@@ -27,7 +27,7 @@ function CheckAuth({ isAuthenticated, user, children }) {
     }
   }
 
-//   
+//  if user is authenticated and the current path is admin, redirect to unauth page  
   if (
     isAuthenticated &&
     user?.role !== "admin" &&
