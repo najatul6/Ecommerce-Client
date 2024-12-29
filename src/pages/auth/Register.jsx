@@ -1,3 +1,6 @@
+
+import CommonForm from "@/components/common/CommonForm";
+import { registerFormControls } from "@/config";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -9,6 +12,7 @@ const initialState = {
 
 function AuthRegister() {
   const [formData, setFormData] = useState(initialState);
+
   return (
     <div className="w-full mx-auto max-w-md space-y-6">
       <div className="text-center">
@@ -18,6 +22,12 @@ function AuthRegister() {
           <Link to="/auth/login" className="font-medium text-primary hover:underline ml-2"> Log In</Link>
         </p>
       </div>
+      <CommonForm 
+      formControls={registerFormControls}
+      buttonText="Sign Up"
+      formData={formData}
+      setFormData={setFormData}
+      />
     </div>
   );
 }

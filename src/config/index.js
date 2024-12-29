@@ -1,4 +1,4 @@
-export const signUpFormControls=[
+export const registerFormControls=[
     {
         name:"userName",
         label:"User Name",
