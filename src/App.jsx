@@ -13,33 +13,46 @@ import ShoppingHome from "./pages/shopping-view/home";
 import ShoppingListing from "./pages/shopping-view/listing";
 import ShoppingCheckout from "./pages/shopping-view/checkout";
 import ShoppingAccount from "./pages/shopping-view/account";
+import CheckAuth from "./components/common/check-auth";
 
 function App() {
   return (
     <div className="flex flex-col overflow-hidden bg-white">
       <Routes>
-        <Route path="/auth" element={
-          
-          <AuthLayout />
-      }>
+        <Route
+          path="/auth"
+          element={
+            <CheckAuth>
+              <AuthLayout />
+            </CheckAuth>
+          }
+        >
           <Route path="register" element={<AuthRegister />} />
           <Route path="login" element={<AuthLogin />} />
         </Route>
 
-        <Route path="/admin" element={
-          
-          <AdminLayout />
-      }>
+        <Route
+          path="/admin"
+          element={
+            <CheckAuth>
+              <AdminLayout />
+            </CheckAuth>
+          }
+        >
           <Route path="dashboard" element={<AdminDashboard />} />
           <Route path="products" element={<AdminProducts />} />
           <Route path="orders" element={<AdminOrders />} />
           <Route path="features" element={<AdminFeatures />} />
         </Route>
 
-        <Route path="/shop" element={
-          
-          <ShoppingLayout />
-      }>
+        <Route
+          path="/shop"
+          element={
+            <CheckAuth>
+              <ShoppingLayout />
+            </CheckAuth>
+          }
+        >
           <Route path="home" element={<ShoppingHome />} />
           <Route path="listing" element={<ShoppingListing />} />
           <Route path="checkout" element={<ShoppingCheckout />} />
