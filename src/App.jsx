@@ -19,7 +19,7 @@ function App() {
   const isAuthenticated = true;
   const user = {
     name:'Najatul islam',
-    role:'admin'
+    role:'user'
   };
   
   return (
