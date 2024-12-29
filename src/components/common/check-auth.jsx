@@ -1,5 +1,5 @@
 
-function CheckAuth() {
+function CheckAuth({isAuthenticated,user, children}) {
   return (
     <div>CheckAuth</div>
   )
