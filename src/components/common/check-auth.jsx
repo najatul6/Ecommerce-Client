@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { Navigate, useLocation } from "react-router-dom";
 
 function CheckAuth({ isAuthenticated, user, children }) {
@@ -47,5 +48,11 @@ function CheckAuth({ isAuthenticated, user, children }) {
 
   return <>{children}</>;
 }
+
+CheckAuth.propTypes = {
+    isAuthenticated: PropTypes.bool.isRequired,
+    user: PropTypes.object.isRequired,
+    children: PropTypes.node,
+};
 
 export default CheckAuth;
