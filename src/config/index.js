@@ -13,7 +13,6 @@ export const logInFormControls = [
     componentType: "input",
     type: "password",
   },
- 
 ];
 export const registerFormControls = [
   {
