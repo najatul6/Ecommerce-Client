@@ -1,9 +1,13 @@
-import { SelectContent } from "@redix-ui/react-select";
-import { Input } from "../ui/input";
-import { Select, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
+
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select";
 import { Textarea } from "../ui/textarea";
 import { Button } from "../ui/button";
-import PropTypes from 'prop-types';
 
 function CommonForm({
   formControls,
