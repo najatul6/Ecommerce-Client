@@ -1,4 +1,5 @@
-
+import { Input } from "../ui/input";
+import { Label } from "../ui/label";
 import {
   Select,
   SelectContent,
@@ -120,27 +121,6 @@ function CommonForm({
 }
 
 
-CommonForm.propTypes = {
-  formControls: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      placeholder: PropTypes.string,
-      componentType: PropTypes.string.isRequired,
-      type: PropTypes.string,
-      options: PropTypes.arrayOf(
-        PropTypes.shape({
-          id: PropTypes.string.isRequired,
-          label: PropTypes.string.isRequired,
-        })
-      ),
-      label: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-  formData: PropTypes.object.isRequired,
-  setFormData: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  buttonText: PropTypes.string,
-};
 
 export default CommonForm;
 
