@@ -16,8 +16,11 @@ import AdminLayout from "./components/admin-view/layout";
 import ShoppingLayout from "./components/shopping-view/layout";
 
 function App() {
-  const isAuthenticated = false;
-  const user = null;
+  const isAuthenticated = true;
+  const user = {
+    name:'Najatul islam',
+    role:'admin'
+  };
   
   return (
     <div className="flex flex-col overflow-hidden bg-white">
