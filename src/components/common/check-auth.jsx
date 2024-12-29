@@ -21,6 +21,10 @@ function CheckAuth({ isAuthenticated, user, children }) {
   if(isAuthenticated && user?.role !== "admin" && location.pathname.includes === 'admin'){
     return <Navigate to="/unauth-page" />
   }
+
+  if(isAuthenticated && user?.role === "admin" && location.pathname.includes ==='shop'){
+    
+  }
 }
 
 export default CheckAuth;
