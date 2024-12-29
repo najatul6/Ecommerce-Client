@@ -36,7 +36,7 @@ function CheckAuth({ isAuthenticated, user, children }) {
     return <Navigate to="/unauth-page" />;
   }
 
-//   
+// if user is authenticated and the current path is shop, redirect to admin dashboard page   
   if (
     isAuthenticated &&
     user?.role === "admin" &&
