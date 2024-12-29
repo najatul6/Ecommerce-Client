@@ -14,6 +14,7 @@ import CheckAuth from "./components/common/check-auth";
 import AuthLayout from "./components/auth/layout";
 import AdminLayout from "./components/admin-view/layout";
 import ShoppingLayout from "./components/shopping-view/layout";
+import UnAuthPage from "./pages/unauth-page";
 
 function App() {
   const isAuthenticated = true;
@@ -65,6 +66,7 @@ function App() {
           <Route path="account" element={<ShoppingAccount />} />
         </Route>
         <Route path="*" element={<NotFound />} />
+        <Route path="/unauth-page" element={<UnAuthPage />} />
       </Routes>
     </div>
   );
