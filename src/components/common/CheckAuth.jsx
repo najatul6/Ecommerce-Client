@@ -48,4 +48,3 @@ CheckAuth.propTypes = {
   children: PropTypes.node,
 };
 
-export default CheckAuth;
