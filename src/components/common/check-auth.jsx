@@ -36,6 +36,8 @@ function CheckAuth({ isAuthenticated, user, children }) {
   ) {
     return <Navigate to="/admin/dashboard" />;
   }
+
+  return <>{children}</>
 }
 
 export default CheckAuth;
