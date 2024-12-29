@@ -14,7 +14,7 @@ function CheckAuth({ isAuthenticated, user, children }) {
     return <Navigate to="/auth/login" />;
   }
 
-//    
+//  if user is authenticated and the current path is login or register, redirect to dashboard page
   if (
     isAuthenticated &&
     (location.pathname.includes === "/login" ||
