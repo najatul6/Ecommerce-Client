@@ -9,6 +9,7 @@ import {
 } from "../ui/select";
 import { Textarea } from "../ui/textarea";
 import { Button } from "../ui/button";
+import PropTypes from "prop-types";
 
 function CommonForm({
   formControls,
@@ -20,8 +21,7 @@ function CommonForm({
   function inputsByComponentType(getControlItem) {
     let element = null;
 
-    const value=formData[getControlItem.name] || "";
-
+    const value = formData[getControlItem.name] || "";
 
     switch (getControlItem?.componentType) {
       case "input":
@@ -43,10 +43,15 @@ function CommonForm({
         break;
       case "select":
         element = (
-          <Select onValueChange={(value)=>setFormData({
-            ...formData,
-            [getControlItem.name]: value,
-          })} value={value} >
+          <Select
+            onValueChange={(value) =>
+              setFormData({
+                ...formData,
+                [getControlItem.name]: value,
+              })
+            }
+            value={value}
+          >
             <SelectTrigger className="w-full">
               <SelectValue placeholder={getControlItem.placeholder} />
             </SelectTrigger>
@@ -70,11 +75,11 @@ function CommonForm({
             id={getControlItem.id}
             value={value}
             onChange={(e) => {
-                setFormData({
-                  ...formData,
-                  [getControlItem.name]: e.target.value,
-                });
-              }}
+              setFormData({
+                ...formData,
+                [getControlItem.name]: e.target.value,
+              });
+            }}
           />
         );
         break;
@@ -88,11 +93,11 @@ function CommonForm({
             type={getControlItem.type}
             value={value}
             onChange={(e) => {
-                setFormData({
-                  ...formData,
-                  [getControlItem.name]: e.target.value,
-                });
-              }}
+              setFormData({
+                ...formData,
+                [getControlItem.name]: e.target.value,
+              });
+            }}
           />
         );
         break;
@@ -120,7 +125,12 @@ function CommonForm({
   );
 }
 
-
+CommonForm.propTypes = {
+  formControls: PropTypes.array.isRequired,
+  formData: PropTypes.object.isRequired,
+  setFormData: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  buttonText: PropTypes.string,
+};
 
 export default CommonForm;
-
