@@ -1,4 +1,6 @@
+import Lottie from "react-lottie";
 import { Outlet } from "react-router-dom";
+import animationData from "../../assets/developer.json"
 
 function AuthLayout() {
   return (
@@ -8,7 +10,7 @@ function AuthLayout() {
           <h1 className="text-4xl font-extrabold tracking-tight capitalize">
             Welcome to E-Commerce shopping
           </h1>
-          <Lottie 
+          <Lottie animationData={animationData}/>
         </div>
       </div>
       <div className="flex flex-1 items-center justify-center bg-background px-4 py-12 sm:px-6 lg:px-8">
