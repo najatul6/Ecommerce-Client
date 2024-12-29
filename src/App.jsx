@@ -18,6 +18,7 @@ import ShoppingLayout from "./components/shopping-view/layout";
 function App() {
   const isAuthenticated = false;
   const user = null;
+  
   return (
     <div className="flex flex-col overflow-hidden bg-white">
       <Routes>
