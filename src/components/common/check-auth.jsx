@@ -5,7 +5,7 @@ function CheckAuth({ isAuthenticated, user, children }) {
 
   if (
     !isAuthenticated &&
-    !(location.pathname === "/login" || location.pathname === "/register")
+    !(location.pathname.includes === "/login" || location.pathname.includes === "/register")
   ) {
     return <Navigate to="/auth/login" />;
   }
