@@ -3,7 +3,7 @@ import { registerFormControls } from "@/config";
 import { registerUser } from "@/store/auth-slice";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const initialState = {
   userName: "",
@@ -14,13 +14,14 @@ const initialState = {
 function AuthRegister() {
   const [formData, setFormData] = useState(initialState);
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   function onSubmit(e) {
     e.preventDefault();
-    dispatch(registerUser(formData));
+    dispatch(registerUser(formData)).then(()=>{
+      navigate('/auth/login')
+    })
     console.log("Form submitted");
   }
-  console.log(formData);
 
   return (
     <div className="w-full mx-auto max-w-md space-y-6">
@@ -42,7 +43,6 @@ function AuthRegister() {
           to="/auth/login"
           className="font-medium text-primary hover:underline ml-2"
         >
-          {" "}
           Log In
         </Link>
       </p>
