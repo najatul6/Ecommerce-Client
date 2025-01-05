@@ -17,9 +17,9 @@ function AuthRegister() {
   const navigate = useNavigate();
   function onSubmit(e) {
     e.preventDefault();
-    dispatch(registerUser(formData)).then(()=>{
-      navigate('/auth/login')
-    })
+    dispatch(registerUser(formData)).then((data) => {
+      if (data.payload.success) navigate("/auth/login");
+    });
     console.log("Form submitted");
   }
 
