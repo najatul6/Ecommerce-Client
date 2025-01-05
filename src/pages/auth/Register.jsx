@@ -18,10 +18,12 @@ function AuthRegister() {
   function onSubmit(e) {
     e.preventDefault();
     dispatch(registerUser(formData)).then((data) => {
-      if (data.payload.success) navigate("/auth/login");
+      if (data.payload.success) {
+        navigate("/auth/login");
+      }
     });
-    console.log("Form submitted");
   }
+  console.log(formData);
 
   return (
     <div className="w-full mx-auto max-w-md space-y-6">
