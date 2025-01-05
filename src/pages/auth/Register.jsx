@@ -16,11 +16,11 @@ function AuthRegister() {
   const [formData, setFormData] = useState(initialState);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const {toast}=useToast()
+  const { toast } = useToast();
   function onSubmit(e) {
     e.preventDefault();
     dispatch(registerUser(formData)).then((data) => {
-      if (data.payload.success) {
+      if (data.payload) {
         toast({
           title: data.payload.message,
           type: "success",
