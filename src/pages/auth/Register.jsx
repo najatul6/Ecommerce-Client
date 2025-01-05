@@ -1,6 +1,7 @@
 import CommonForm from "@/components/common/CommonForm";
 import { registerFormControls } from "@/config";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 const initialState = {
@@ -11,9 +12,11 @@ const initialState = {
 
 function AuthRegister() {
   const [formData, setFormData] = useState(initialState);
+  const dispatch = useDispatch();
 
-  function onSubmit() {
-
+  function onSubmit(e) {
+    e.preventDefault();
+    console.log("Form submitted");
   }
   console.log(formData);
 
