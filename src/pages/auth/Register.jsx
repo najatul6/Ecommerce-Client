@@ -15,6 +15,7 @@ function AuthRegister() {
   function onSubmit() {
 
   }
+  console.log(formData);
 
   return (
     <div className="w-full mx-auto max-w-md space-y-6">
