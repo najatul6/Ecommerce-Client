@@ -33,9 +33,9 @@ const authSlice = createSlice({
         state.isLoading=false;
         state.user=action.payload;
         state.isAuthenticated=false
-    }).addCase(registerUser.fulfilled,(state,action)=>{
+    }).addCase(registerUser.rejected,(state)=>{
         state.isLoading=false;
-        state.user=action.payload;
+        state.user=null;
         state.isAuthenticated=false
     })
   }
