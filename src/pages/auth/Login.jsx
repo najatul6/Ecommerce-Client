@@ -1,5 +1,5 @@
 import CommonForm from "@/components/common/CommonForm"
-import { logInFormControls } from "@/config"
+import { loginFormControls } from "@/config"
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -23,7 +23,7 @@ function AuthLogin() {
       </h1>
     </div>
     <CommonForm
-      formControls={logInFormControls}
+      formControls={loginFormControls}
       buttonText="Sign In"
       formData={formData}
       setFormData={setFormData}
