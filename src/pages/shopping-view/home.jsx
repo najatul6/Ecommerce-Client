@@ -1,7 +1,7 @@
 
 function ShoppingHome() {
   return (
-    <div>ShoppingHome</div>
+    <div className="min-h-screen w-full flex justify-center items-center text-center">ShoppingHome </div>
   )
 }
 
