@@ -17,8 +17,8 @@ function AuthRegister() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { toast } = useToast();
-  function onSubmit(e) {
-    e.preventDefault();
+  function onSubmit(event) {
+    event.preventDefault();
     dispatch(registerUser(formData)).then((data) => {
       if (data.payload) {
         toast({
