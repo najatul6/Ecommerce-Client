@@ -1,7 +1,7 @@
 
 function AdminDashboard() {
   return (
-    <div>AdminDashboard</div>
+    <div>AdminDashboard Comming soon</div>
   )
 }
 
